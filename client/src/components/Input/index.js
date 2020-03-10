@@ -15,7 +15,6 @@ handleInputChange = event => {
 
 handleFormSubmit = event => {
     event.preventDefault();
-    alert(`You have entered ${this.state.text}`);
     this.setState({
       text: ""
     });
