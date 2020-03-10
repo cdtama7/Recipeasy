@@ -1,11 +1,11 @@
 import React from "react";
 import Container from "./Container";
-import Toast from "./Toast";
+import Items from "./Items";
 
 function Fridge(props) {
     return (
         <Container>
-            <Toast list={props.list}/>
+            <Items list={props.list} deleteItem = { props.deleteItem }/>
         </Container>
     )
     }

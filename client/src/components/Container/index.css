@@ -1,5 +1,6 @@
 .container {
     background-image: url("Fridge.png");
     height: 100%;
-    margin-left: 50%;
+    float: right;
+    width: 50%;
 }
