@@ -1,31 +1,26 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(
-    process.env.MONGODB_URI ||
-    "mongodb://localhost/project3"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3");
 
 const itemSeed = [
-    {
-        name: "peanut butter"
-    },
-    {
-        name: "jelly"
-    },
-    {
-        name: "bread"
-    },
-    {
-        name: "banana"
-    },
-    {
-        name: "strawberries"
-    },
-
+  {
+    name: "peanut butter"
+  },
+  {
+    name: "jelly"
+  },
+  {
+    name: "bread"
+  },
+  {
+    name: "banana"
+  },
+  {
+    name: "strawberries"
+  }
 ];
-db.Items
-  .remove({})
+db.Items.remove({})
   .then(() => db.Items.collection.insertMany(itemSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
