@@ -1,54 +1,25 @@
-import React, { Component } from "react";
-import Fridge from "./components/Fridge";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Container from "./components/Container"
+import Fridge from "./pages/Fridge";
+import Recipes from "./pages/Recipes";
+import Login from "./pages/Login";
 import Footer from "./components/Footer";
-import Input from "./components/Input";
-import API from "./utils/API";
 
-class App extends Component {
+function App() {
+    return (
+      <Router>
+        <div>
+          <Container>
+            <Route exact path="/" component={Fridge} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            <Route exact path="/fridge" component={Fridge} />
+            <Route exact path="/recipes" component={Recipes} />
+          </Container>
+          <Footer/>
+        </div>
+      </Router>
+    );
+  }
 
-    state = {
-        list: [],
-    };
-    addItem = text => {
-        API.saveItem({
-            name: text
-        })
-            .then(res => this.loadItems())
-            .catch(err => console.log(err));
-    }
-
-    deleteItem = id => {
-        API.deleteItem(id)
-            .then(res => this.loadItems())
-            .catch(err => console.log(err));
-    };
-
-
-    componentDidMount() {
-        this.loadItems();
-    }
-
-    loadItems = () => {
-        API.getItems()
-            .then(res => {
-                console.log(res);
-                    this.setState({ list: res.data });
-                }
-            )
-            .catch(err => console.log(err));
-    };
-
-
-
-    render() {
-        return (
-            <div>
-                <Input addItem={this.addItem} />
-
-                <Fridge list={this.state.list} deleteItem={this.deleteItem} />
-                <Footer />
-            </div>
-        );
-    }
-}
-export default App;
+  export default App;
