@@ -29,7 +29,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <ToastContainer />
+        {/*<ToastContainer />*/}
         <NavBar user={user} />
         <div>
           <main className="container">
@@ -37,8 +37,8 @@ class App extends Component {
               <Route path="/register" component={RegisterForm} />
               <Route path="/login" component={LoginForm} />
               <Route path="/logout" component={Logout} />
-              <ProtectedRoute path="/fridge" component={Fridge} />
-              <ProtectedRoute path="/recipes" component={Recipes} />
+              <Route path="/fridge" component={Fridge} />
+              <Route path="/recipes" component={Recipes} />
               <Route path="/not-found" component={NotFound} />
               <Route path="/" component={LoginForm} />
               <Redirect to="/not-found" />

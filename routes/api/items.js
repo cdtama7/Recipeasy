@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const itemController = require("../../controllers/itemController");
 
+router.route("/forUser/:userId")
+  .get(itemController.findAllForUser);
+
 router.route("/")
-  .get(itemController.findAll)
   .post(itemController.create);
 
 router
