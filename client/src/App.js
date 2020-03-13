@@ -10,12 +10,12 @@ function App() {
     return (
       <Router>
         <div>
-          <Container>
+          {/* <Container> */}
             <Route exact path="/" component={Fridge} />
             {/* <Route exact path="/login" component={Login} /> */}
             <Route exact path="/fridge" component={Fridge} />
             <Route exact path="/recipes" component={Recipes} />
-          </Container>
+          {/* </Container> */}
           <Footer/>
         </div>
       </Router>

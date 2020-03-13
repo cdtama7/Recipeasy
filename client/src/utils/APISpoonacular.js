@@ -9,8 +9,11 @@ export default {
   },
   // Get recipes based on user profile data for users with normal
   getUserRecipes: function(userFridge) {
-    return axios.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + userFridge + "&ranking=2");
-  },  
+    return axios.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + userFridge + "&ranking=2&apiKey=df41f99267594919b25d6ad4cb307750");
+  },
+  getIngredientsById: function(id) {
+    return axios.get("https://api.spoonacular.com/recipes/" + id + "/ingredientWidget.json")
+  }
   // Get recipes based on user profile data for users with special diets
 //   getUserRecipesWithDiet: function(userFridge, userDiet) {
 //       axios.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + userFridge + "&ranking=2&number=100")
