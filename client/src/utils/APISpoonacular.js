@@ -2,17 +2,18 @@ import axios from "axios";
 
 export default {
   getRandomRecipe: function() {
-    return axios.get("https://api.spoonacular.com/recipes/random?number=1");
+    return axios.get("/spoonacular/recipes/random?number=1");
   },
   getTenRandomRecipes: function() {
-    return axios.get("https://api.spoonacular.com/recipes/random?number=10");
+    return axios.get("/spoonacular/recipes/random?number=10");
   },
   // Get recipes based on user profile data for users with normal
   getUserRecipes: function(userFridge) {
-    return axios.get("https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + userFridge + "&ranking=2&apiKey=df41f99267594919b25d6ad4cb307750");
+    return axios.get("/spoonacular/recipes/findByIngredients?ingredients=" + userFridge + "&ranking=2&apiKey=df41f99267594919b25d6ad4cb307750");
   },
+  
   getIngredientsById: function(id) {
-    return axios.get("https://api.spoonacular.com/recipes/" + id + "/ingredientWidget.json")
+    return axios.get("/spoonacular/recipes/" + id + "/ingredientWidget.json")
   }
   // Get recipes based on user profile data for users with special diets
 //   getUserRecipesWithDiet: function(userFridge, userDiet) {
