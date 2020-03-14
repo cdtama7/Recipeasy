@@ -1,6 +1,6 @@
 module.exports = {
     Items: require("./item"),
-    Tests: require("./test")
+    Users: require("./user"),
   };
 
   

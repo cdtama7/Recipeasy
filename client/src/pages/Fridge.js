@@ -3,6 +3,11 @@ import Fridge from "../components/Fridge";
 import Footer from "../components/Footer";
 import Input from "../components/Input";
 import API from "../utils/API";
+import NextButton from "../components/NextButton";
+import auth from "../services/authService";
+
+// This is weird, needs to work with real auth.
+let userId = "5e6a6be60e9ea116adc183cc";
 
 class Fridge2 extends Component {
 
@@ -11,7 +16,8 @@ class Fridge2 extends Component {
     };
     addItem = text => {
         API.saveItem({
-            name: text
+            name: text,
+            userId: userId,
         })
             .then(res => this.loadItems())
             .catch(err => console.log(err));
@@ -29,7 +35,9 @@ class Fridge2 extends Component {
     }
 
     loadItems = () => {
-        API.getItems()
+
+
+        API.getItemsForUser(userId)
             .then(res => {
                 console.log(res);
                     this.setState({ list: res.data });
@@ -46,7 +54,8 @@ class Fridge2 extends Component {
                 <Input addItem={this.addItem} />
 
                 <Fridge list={this.state.list} deleteItem={this.deleteItem} />
-                <Footer />
+                <NextButton />
+    
             </div>
         );
     }

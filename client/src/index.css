@@ -11,4 +11,8 @@
     padding: 0;
     margin: 0;
   }
-  
+  body {
+    background-image: URL("background.png");
+    background-size:cover;
+
+  }
