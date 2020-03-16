@@ -1,49 +1,40 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Redirect } from "react-router-dom";
+import { useAuth0 } from '../contexts/auth0-context';
+import { Navbar, Nav } from 'react-bootstrap'
 
-const NavBar = ({ user }) => {
+// See https://react-bootstrap.github.io for docs
+const NavBar = () => {
+  const { isLoading, user, loginWithRedirect, logout } = useAuth0();
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        RecipEasy
-      </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon" />
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          {!user && (
+    <React.Fragment>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">RecipEasy</Navbar.Brand>
+        <Nav className="mr-auto">
+        </Nav>
+
+        <Nav className="ml-auto">
+          {!isLoading && !user && (
             <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/login">
+              <Nav.Link onClick={loginWithRedirect}>
                 Login
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/register">
-                Register
-              </NavLink>
+              </Nav.Link>
             </React.Fragment>
           )}
-          {user && (
+          {!isLoading && user && (
             <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/profile">
-                {user.name}
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/logout">
+              <Navbar.Text>{user.name}</Navbar.Text>
+              <Nav.Link onClick={() => logout({ returnTo: window.location.origin })}>
                 Logout
-              </NavLink>
+              </Nav.Link>
             </React.Fragment>
           )}
-        </div>
-      </div>
-    </nav>
-  );
-};
+        </Nav>
+      </Navbar>
+      
+    </React.Fragment>
+  )
+}
 
 export default NavBar;
