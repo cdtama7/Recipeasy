@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./index.css";
 
 
@@ -7,7 +8,7 @@ import "./index.css";
 function NextButton() {
     return (
         <div>
-        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => window.location = "/recipes"}>Done</button>
+        <Link className="btn btn-primary btn-lg btn-block" to="/recipes">Find Recipes</Link>
         </div>
     );
   }

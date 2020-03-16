@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import Fridge from "../components/Fridge";
-import Footer from "../components/Footer";
 import Input from "../components/Input";
 import API from "../utils/API";
 import NextButton from "../components/NextButton";
-import auth from "../services/authService";
-
-// This is weird, needs to work with real auth.
-let userId = "5e6a6be60e9ea116adc183cc";
 
 class Fridge2 extends Component {
 
@@ -17,7 +12,7 @@ class Fridge2 extends Component {
     addItem = text => {
         API.saveItem({
             name: text,
-            userId: userId,
+            userId: this.props.user.sub,
         })
             .then(res => this.loadItems())
             .catch(err => console.log(err));
@@ -35,9 +30,7 @@ class Fridge2 extends Component {
     }
 
     loadItems = () => {
-
-
-        API.getItemsForUser(userId)
+        API.getItemsForUser(this.props.user.sub)
             .then(res => {
                 console.log(res);
                     this.setState({ list: res.data });
@@ -46,9 +39,9 @@ class Fridge2 extends Component {
             .catch(err => console.log(err));
     };
 
-
-
     render() {
+        console.log("user is: ");
+        console.log(this.props.user);
         return (
             <div>
                 <Input addItem={this.addItem} />
