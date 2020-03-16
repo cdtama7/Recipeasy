@@ -2,9 +2,19 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import APISpoonacular from "../utils/APISpoonacular";
 import Search from "../components/search";
-import SearchResults from "../components/searchResults"
-import Container from "../components/Container"
+import SearchResults from "../components/searchResults";
+import Container from "../components/Container";
+import dummySearchResults from "../dummySearchResults"
 
+<<<<<<< HEAD
+const user = {
+  "name":"Taylor",
+  "diet":"normal",
+  "fridge":["cheese","milk","eggs","flour","beef"]
+}
+
+=======
+>>>>>>> 168e4c10a98e6672c2568e5fb2e8e1361c4142ac
 class Recipes extends Component {
   state = {
     // search: "",
