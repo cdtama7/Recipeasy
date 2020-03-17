@@ -4,37 +4,23 @@ import APISpoonacular from "../utils/APISpoonacular";
 import Search from "../components/search";
 import SearchResults from "../components/searchResults";
 import Container from "../components/Container";
-import dummySearchResults from "../dummySearchResults"
 
-<<<<<<< HEAD
-const user = {
-  "name":"Taylor",
-  "diet":"normal",
-  "fridge":["cheese","milk","eggs","flour","beef"]
-}
-
-=======
->>>>>>> 168e4c10a98e6672c2568e5fb2e8e1361c4142ac
 class Recipes extends Component {
   state = {
     // search: "",
     diet: "",
     results: [],
     ingredients: [],
-    fridge: []
+    fridge: [],
+    list: []
   };
 
-  // When the component mounts, get a list of all available base breeds and update this.state.breeds
   componentDidMount() {
     API.getItemsForUser(this.props.user.sub)
       .then(res => this.setState({ fridge: res.data.map(item => item.name)}))
       .then(() => console.log(this.state.fridge))
       .catch(err => console.log(err));
   }
-
-  // handleInputChange = event => {
-  //   this.setState({ search: event.target.value });
-  // };
 
   handleNormalClick = () => {
     this.setState({ diet: "normal" });
@@ -64,6 +50,7 @@ class Recipes extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.fridge);
     if (this.state.diet === "normal") {
       APISpoonacular.getUserRecipes(this.state.fridge)
         .then(res => {
@@ -71,6 +58,7 @@ class Recipes extends Component {
             throw new Error();
           }
           this.setState({ results: res.data });
+          console.log(this.state.results);
         })
         .catch(err => this.setState({ error: err.message }));
     };
@@ -90,7 +78,11 @@ class Recipes extends Component {
             handleFormSubmit={this.handleFormSubmit}
           // handleInputChange={this.handleInputChange}
           />
-          <SearchResults results={this.state.results} />
+          <SearchResults 
+            results={this.state.results}
+            instructions={this.state.instructions}
+            getAndShowInstructions={this.getAndShowInstructions} 
+          />
         </Container>
       </div>
     );
