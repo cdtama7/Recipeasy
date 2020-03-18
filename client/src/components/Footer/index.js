@@ -4,9 +4,12 @@ import logo from "../../logo.png";
 
 function Footer() {
   return (
-    <footer className="footer fixed-bottom">
-      <img src={logo} />
-    </footer>
+    <React.Fragment>
+      <p></p>
+      <footer className="footer">
+        <img src={logo} alt="logo" />
+      </footer>
+    </React.Fragment>
   );
 }
 
