@@ -2,7 +2,8 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px;
+  height: auto;
   margin: 0 auto;
-  background-color: aliceblue;
+  background-color: white;
+  text-align: center;
 }
