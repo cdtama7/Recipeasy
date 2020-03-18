@@ -7,19 +7,22 @@ class Instructions extends Component {
   state = {
     id: this.props.id,
     stepNums: [],
-    stepText: []
+    stepText: [],
+    active: false
   }
 
-  getAndShowInstructions = (id, event) => {
-    // event.preventDefault();
-    APISpoonacular.getInstructionsById(id)
+  getAndShowInstructions = () => {
+    console.log(this.state.id);
+    APISpoonacular.getInstructionsById(this.state.id)
       .then(res => {
-        res.data.steps.map((step) => (
+        console.log(res)
+        this.setState({ active: true})
+        res.data[0].steps.map((step) => (
           this.setState({ stepNums: [...this.state.stepNums, step.number]}),
           this.setState({ stepText: [...this.state.stepText, step.step]})
         ))
-      .catch(err => this.setState({ error: err.message }))
     })
+    .catch(err => this.setState({ error: err.message }))
   }
   
   render() {
@@ -28,15 +31,17 @@ class Instructions extends Component {
       <button type="submit" id="get-instructions" onClick={this.getAndShowInstructions} className="btn btn-success">
         Get Instructions
       </button>
-      <Card id="instructions">
+      <Card className={this.state.active ? "active":"inactive"} id="instructions">
       <Card.Header>{this.props.title}</Card.Header>
       <Card.Body>
-        <Card.Text>
+        {/* <Card.Text> */}
           {this.state.stepNums.map((stepNum, i) => (
-            <h3>{stepNum} + "."</h3>,
-          <p>{this.state.stepText}</p>
+            <div>
+              {stepNum}.
+              <p>{this.state.stepText}</p>
+            </div>
           ))}
-        </Card.Text>
+        {/* </Card.Text> */}
       </Card.Body>
     </Card>
     </div>

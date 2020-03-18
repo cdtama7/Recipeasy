@@ -17,7 +17,7 @@ export default {
   },
 
   getInstructionsById: function(id, event) {
-    return axios.get("https://api.spoonacular.com/recipes/" + id + "/analyzedInstructions?apiKey=df41f99267594919b25d6ad4cb307750")
+    return axios.get("/spoonacular/recipes/" + id + "/analyzedInstructions?apiKey=df41f99267594919b25d6ad4cb307750")
   }
   // Get recipes based on user profile data for users with special diets
 //   getUserRecipesWithDiet: function(userFridge, userDiet) {

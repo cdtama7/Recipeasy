@@ -3,5 +3,13 @@
 }
 
 #instructions {
-  display:none;
+  /* display:none; */
+}
+
+.active {
+  display: block !important
+}
+
+.inactive {
+  display:none !important
 }
