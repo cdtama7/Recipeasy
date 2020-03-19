@@ -38,7 +38,7 @@ class Instructions extends Component {
           {this.state.stepNums.map((stepNum, i) => (
             <div>
               {stepNum}.
-              <p>{this.state.stepText}</p>
+              <p>{this.state.stepText[i]}</p>
             </div>
           ))}
         {/* </Card.Text> */}

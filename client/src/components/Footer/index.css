@@ -10,6 +10,10 @@ p {
   padding: 0px 0px 0px 0px;
   background-color: white;
   text-align: center;
+<<<<<<< HEAD
+  display: none;
+=======
   position: fixed;
+>>>>>>> ddfca25994d7d37fbfbaf0c3a34612404f28dd3d
 }
 

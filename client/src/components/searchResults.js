@@ -35,10 +35,8 @@ function SearchResults(props) {
             </div>
           </div>
           <Instructions
-            // instructions={props.instructions}
             title={result.title}
             id={result.id}
-            // getAndShowInstructions={props.getAndShowInstructions}
           />
         </div>
       ))}
