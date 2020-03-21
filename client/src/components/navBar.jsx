@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink, Redirect } from "react-router-dom";
 import { useAuth0 } from '../contexts/auth0-context';
 import { Navbar, Nav } from 'react-bootstrap'
 
@@ -10,7 +9,7 @@ const NavBar = () => {
   return (
     <React.Fragment>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">RecipEasy</Navbar.Brand>
+        <Navbar.Brand href="#home">Welcome to RecipEasy</Navbar.Brand>
         <Nav className="mr-auto">
         </Nav>
 

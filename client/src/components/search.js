@@ -1,12 +1,10 @@
 import React from "react";
-import Container from "./Container"
 // import "./style.css";
 
 function Search(props) {
   
   return (
-    <Container>
-      <h1>Find Your Custom Recipes!</h1>
+    <React.Fragment>
       <h3>Choose your diet</h3>
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
         <label className="btn btn-secondary active" onClick={props.handleNormalClick}>
@@ -26,7 +24,7 @@ function Search(props) {
       <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
         Search
       </button>
-    </Container>
+      </React.Fragment>
   );
 }
 

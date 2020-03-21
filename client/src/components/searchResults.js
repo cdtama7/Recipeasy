@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import Instructions from "./Instructions/instructions"
+import FavButton from "./FavButton"
+import { useAuth0 } from '../contexts/auth0-context';
+
 // import "./style.css";
 
 class SearchResults extends Component {
+  // const { user } = useAuth0();
   render() {  
     if (this.props.diet === "normal") {
       return (
@@ -14,6 +18,7 @@ class SearchResults extends Component {
                   <div className="row no-gutters">
                     <div className="col-md-4">
                       <img src={result.image} className="card-img" alt="..."/>
+                      <FavButton recipe={result} userId={user.sub}/>
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
@@ -33,11 +38,11 @@ class SearchResults extends Component {
                       </div>
                     </div>
                   </div>
-                </div>
+                  </div>
               </div>
               <Instructions
-                title={result.title}
-                id={result.id}
+                title={specialResult.title}
+                id={specialResult.id}
               />
             </div>
           ))}
