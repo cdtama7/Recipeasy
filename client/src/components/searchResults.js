@@ -3,21 +3,18 @@ import Instructions from "./Instructions/instructions"
 import FavButton from "./FavButton"
 import { useAuth0 } from '../contexts/auth0-context';
 
-// import "./style.css";
-
-class SearchResults extends Component {
-  // const { user } = useAuth0();
-  render() {  
-    if (this.props.diet === "normal") {
+  function SearchResults(props) {
+    const { user } = useAuth0(); 
+    if (props.diet === "normal") {
       return (
         <div className="container-fluid">
-          {this.props.results.map((result, i) => (
+          {props.results.map((result, i) => (
             <div key={"search result 1" + i} className="row">
               <div className="col-md-6">
                 <div  className="card mb-3" style={{maxWidth: "540px"}}>
                   <div className="row no-gutters">
                     <div className="col-md-4">
-                      <img src={result.image} className="card-img" alt="..."/>
+                      <img src={result.image} className="card-img" alt="..."/><br/>
                       <FavButton recipe={result} userId={user.sub}/>
                     </div>
                     <div className="col-md-8">
@@ -41,8 +38,8 @@ class SearchResults extends Component {
                   </div>
               </div>
               <Instructions
-                title={specialResult.title}
-                id={specialResult.id}
+                title={result.title}
+                id={result.id}
               />
             </div>
           ))}
@@ -52,13 +49,14 @@ class SearchResults extends Component {
     else {
       return (
         <div className="container-fluid">
-          {this.props.specialResults.map((specialResult, i) => (
+          {props.specialResults.map((specialResult, i) => (
             <div key={i} className="row">
               <div className="col-md-6">
                 <div  className="card mb-3" style={{maxWidth: "540px"}}>
                   <div className="row no-gutters">
                     <div className="col-md-4">
-                      <img src={specialResult.image} className="card-img" alt="..."/>
+                    <img src={specialResult.image} className="card-img" alt="..."/><br/>
+                      <FavButton recipe={specialResult} userId={user.sub}/>
                     </div>
                     <div className="col-md-8">
                       <div className="card-body">
@@ -85,6 +83,6 @@ class SearchResults extends Component {
       );
 
     }
-  };
+//   };
 };
 export default SearchResults;
