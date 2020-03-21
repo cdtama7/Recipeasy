@@ -12,7 +12,7 @@ import NavBar from "./components/navBar";
 import ProtectedRoute from "./components/common/protectedRoute";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import StartScreen from "./components/startScreen";
+import StartScreen from "./components/StartScreen";
 import { useAuth0 } from './contexts/auth0-context';
 
 function App() {
