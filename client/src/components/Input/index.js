@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button } from 'react-bootstrap';
+
 import "./index.css";
 
 class Input extends Component {
@@ -27,9 +29,10 @@ render () {
     return (
         <div>
         <div className="input">
-            <label htmlFor="formGroupExampleInput">Tell us what you've got.</label>
+            <label htmlFor="formGroupExampleInput">Add a new item:</label>
             <input value = {this.state.text} name = "text" onChange = {this.handleInputChange} type="text" className="form-control" id="formGroupExampleInput" placeholder="Whats in your fridge?" />
-            <button onClick = {this.handleFormSubmit} type="submit" className="btn btn-primary">Submit</button>
+            <br/>
+            <Button variant="primary" onClick = {this.handleFormSubmit} type="submit" >Add to Fridge</Button>
         </div>
         </div>
     );

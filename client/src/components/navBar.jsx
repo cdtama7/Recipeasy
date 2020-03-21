@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink, Redirect } from "react-router-dom";
 import { useAuth0 } from '../contexts/auth0-context';
 import { Navbar, Nav } from 'react-bootstrap'
 

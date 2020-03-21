@@ -4,6 +4,7 @@ import APISpoonacular from "../utils/APISpoonacular";
 import Search from "../components/search";
 import SearchResults from "../components/searchResults";
 import Container from "../components/Container";
+//import { Container } from "react-bootstrap"
 
 class Recipes extends Component {
   state = {

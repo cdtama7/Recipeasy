@@ -10,9 +10,10 @@ const Items = (props) => {
         }
 
         return (
-            <div>
+            <React.Fragment>
+                <div className="fridge-header">Your Fridge:</div>
                 {props.list.map((item) => (
-                    <Toast className = "toast" key={item._id}>
+                    <Toast key={item._id}>
                         <ToastBody>
                             {item.name}
                             <button type="button" className="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onClick = { clickHandler }>
@@ -21,7 +22,7 @@ const Items = (props) => {
                             </ToastBody>
                     </Toast>
                 ))}
-            </div>
+            </React.Fragment>
         )
     }
 

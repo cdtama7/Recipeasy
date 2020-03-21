@@ -12,7 +12,7 @@ class FavButton extends Component {
     componentDidMount = () => {
         API.getFavsForUserByRecipeId(this.props.userId, this.props.recipe.id)
             .then(result => {
-                this.setState({ fav: result.data.length != 0 })
+                this.setState({ fav: result.data.length !== 0 })
                 console.log(result);
             });
         console.log(this.props.recipe);
