@@ -13,9 +13,8 @@
   }
   body {
     background-image: URL("background.png");
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-   
-
   }
+

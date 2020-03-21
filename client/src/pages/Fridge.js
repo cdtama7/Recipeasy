@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Fridge from "../components/Fridge";
+import { Row, Col } from "react-bootstrap"
 import Input from "../components/Input";
-import API from "../utils/API";
+import Items from "../components/Items";
 import NextButton from "../components/NextButton";
+import API from "../utils/API";
 
-class Fridge2 extends Component {
+class Fridge extends Component {
 
     state = {
         list: [],
@@ -24,7 +25,6 @@ class Fridge2 extends Component {
             .catch(err => console.log(err));
     };
 
-
     componentDidMount() {
         this.loadItems();
     }
@@ -40,17 +40,21 @@ class Fridge2 extends Component {
     };
 
     render() {
-        console.log("user is: ");
-        console.log(this.props.user);
         return (
-            <div>
-                <Input addItem={this.addItem} />
-
-                <Fridge list={this.state.list} deleteItem={this.deleteItem} />
+            <React.Fragment>
+                <Row>
+                    <Col md={6}>
+                        <Input addItem={this.addItem} />
+                    </Col>
+                    <Col md={6}>
+                        <Items list={ this.state.list } deleteItem = { this.deleteItem }/>
+                    </Col>
+                </Row>
+                <br/>
                 <NextButton />
     
-            </div>
+            </React.Fragment>
         );
     }
 }
-export default Fridge2;
+export default Fridge;

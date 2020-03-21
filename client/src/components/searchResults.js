@@ -1,18 +1,23 @@
 import React from "react";
 import Instructions from "./Instructions/instructions"
+import FavButton from "./FavButton"
+import { useAuth0 } from '../contexts/auth0-context';
+
 // import "./style.css";
 
 function SearchResults(props) {
+  const { user } = useAuth0();
 
   return (
     <div className="container-fluid">
       {props.results.map((result, i) => (
-        <div className="row">
+        <div className="row" key={i}>
           <div className="col-md-6">
             <div key={i} className="card mb-3" style={{maxWidth: "540px"}}>
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src={result.image} className="card-img" alt="..."/>
+                  <img src={result.image} className="card-img" alt="..."/><br/>
+                  <FavButton recipe={result} userId={user.sub}/>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">

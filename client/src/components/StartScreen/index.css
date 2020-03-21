@@ -1,0 +1,29 @@
+
+.header{
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    color: #BF5C05;
+    font-weight: bolder;
+}
+
+.text {
+    font-family: 'Baloo 2', cursive;
+    font-size: 16px;
+    color: #9C4D07;
+}
+
+.jumb {
+    background-color: rgb(245, 240, 229) !important;
+    opacity: 0.75;
+    border-radius: 40px;
+    width: 70%;
+    margin-top: 10%;
+    margin-left: 15%;
+}
+.one {
+    font-size: 36px;
+}
+
+.two {
+    font-size: 26px;
+}
