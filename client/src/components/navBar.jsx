@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <React.Fragment>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">RecipEasy</Navbar.Brand>
+        <Navbar.Brand href="#home">Welcome to RecipEasy</Navbar.Brand>
         <Nav className="mr-auto">
         </Nav>
 
