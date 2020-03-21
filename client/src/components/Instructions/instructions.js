@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./instructions.css";
 import {Card} from 'react-bootstrap';
+import "./instructions.css";
 import APISpoonacular from "../../utils/APISpoonacular";
 
 class Instructions extends Component {
@@ -28,7 +28,7 @@ class Instructions extends Component {
   render() {
   return (
     <div className="col-md-6">
-      <button type="submit" id="get-instructions" onClick={this.getAndShowInstructions} className="btn btn-success">
+      <button type="submit" className={this.state.active ? "inactive":"active"} id="get-instructions" onClick={this.getAndShowInstructions}>
         Get Instructions
       </button>
       <Card className={this.state.active ? "active":"inactive"} id="instructions">

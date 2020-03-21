@@ -12,7 +12,10 @@ class Recipes extends Component {
     results: [],
     ingredients: [],
     fridge: [],
-    list: []
+    list: [],
+    specialIDs: [],
+    specialIndexes: [],
+    specialResults: []
   };
 
   componentDidMount() {
@@ -23,34 +26,32 @@ class Recipes extends Component {
   }
 
   handleNormalClick = () => {
+    this.setState({ results: []});
     this.setState({ diet: "normal" });
     console.log(this.state.diet);
-    console.log(this.state.fridge)
   }
 
-  handleKetoClick = () => {
-    this.setState({ diet: "keto" })
+  handleGlutenFreeClick = () => {
+    this.setState({ specialResults: []});
+    this.setState({ diet: "gluten free" })
     console.log(this.state.diet)
   }
 
   handleVeganClick = () => {
+    this.setState({ specialResults: []});
     this.setState({ diet: "vegan" })
     console.log(this.state.diet)
   }
 
-  handleLowFatClick = () => {
-    this.setState({ diet: "low-fat" })
-    console.log(this.state.diet)
-  }
-
   handleVegetarianClick = () => {
+    this.setState({ specialResults: []});
     this.setState({ diet: "vegetarian" })
     console.log(this.state.diet)
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.fridge);
+    this.setState({ results: []})
     if (this.state.diet === "normal") {
       APISpoonacular.getUserRecipes(this.state.fridge)
         .then(res => {
@@ -61,8 +62,63 @@ class Recipes extends Component {
           console.log(this.state.results);
         })
         .catch(err => this.setState({ error: err.message }));
-    };
-  };
+    }
+    else {
+      APISpoonacular.getSpecialUserRecipes(this.state.fridge)
+        .then(res => {
+          if (res.data.status === "error") {
+            throw new Error();
+          }
+          this.setState({ specialResults: []})
+          this.setState({ specialIDs: []})
+          res.data.map(result => (
+            this.setState({ specialIDs: [...this.state.specialIDs, result.id]})
+          ))
+          console.log(this.state.specialIDs)
+          APISpoonacular.getInformationBulk(this.state.specialIDs)
+            .then(res => {
+              if (res.data.status === "error") {
+                throw new Error();
+              }
+              switch(this.state.diet) {
+                case "vegetarian":
+                  this.setState({ specialIndexes: []});
+                  res.data.map((result,i) => {
+                  if (result.vegetarian === true) {
+                    this.setState({ specialIndexes: [...this.state.specialIndexes, i]})
+                  };
+                });
+                  break;
+                case "vegan":
+                  this.setState({ specialIndexes: []});
+                  res.data.map((result,i) => {
+                  if (result.vegan === true) {
+                    this.setState({ specialIndexes: [...this.state.specialIndexes, i]})
+                  };
+                });
+                  break;
+                case "gluten free":
+                  this.setState({ specialIndexes: []});
+                  res.data.map((result,i) => {
+                  if (result.glutenFree === true) {
+                    this.setState({ specialIndexes: [...this.state.specialIndexes, i]})
+                  };
+                });
+              }
+              console.log(res.data)
+              for (let i = 0 ; i < 5 ; i++) {
+                console.log(res.data[this.state.specialIndexes[i]])
+                this.setState({ specialResults: [...this.state.specialResults, res.data[this.state.specialIndexes[i]]]})
+              }
+
+            })
+            console.log(this.state.specialIDs)
+            .catch(err => this.setState({ error: err.message }));
+        })
+        .catch(err => this.setState({ error: err.message }));
+
+      };
+  }
 
   render() {
     return (
@@ -71,22 +127,20 @@ class Recipes extends Component {
           <h1 className="text-center">Recipe Search</h1>
           <Search
             handleNormalClick={this.handleNormalClick}
-            handleKetoClick={this.handleKetoClick}
+            handleGlutenFreeClick={this.handleGlutenFreeClick}
             handleVeganClick={this.handleVeganClick}
-            handleLowFatClick={this.handleLowFatClick}
             handleVegetarianClick={this.handleVegetarianClick}
             handleFormSubmit={this.handleFormSubmit}
-          // handleInputChange={this.handleInputChange}
           />
           <SearchResults 
             results={this.state.results}
-            instructions={this.state.instructions}
-            getAndShowInstructions={this.getAndShowInstructions} 
+            specialResults={this.state.specialResults}
+            diet={this.state.diet}
           />
         </Container>
       </div>
     );
-  }
-}
+  };
+};
 
 export default Recipes;

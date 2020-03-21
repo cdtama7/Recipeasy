@@ -1,10 +1,10 @@
-#get-instructions {
+/* #get-instructions {
   display: block;
 }
 
 #instructions {
   /* display:none; */
-}
+/* } */
 
 .active {
   display: block !important
