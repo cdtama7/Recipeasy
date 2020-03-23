@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Instructions from "./Instructions/instructions"
 import FavButton from "./FavButton"
 import { useAuth0 } from '../contexts/auth0-context';

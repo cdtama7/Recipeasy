@@ -107,7 +107,8 @@ class Recipes extends Component {
                 });
               }
               console.log(res.data)
-              for (let i = 0 ; i < 5 ; i++) {
+              let numResults = Math.min(this.state.specialIndexes.length, 5);
+              for (let i = 0 ; i < numResults ; i++) {
                 console.log(res.data[this.state.specialIndexes[i]])
                 this.setState({ specialResults: [...this.state.specialResults, res.data[this.state.specialIndexes[i]]]})
               }
@@ -122,6 +123,8 @@ class Recipes extends Component {
   }
 
   render() {
+    console.log("special results");
+    console.log(this.state.specialResults);
     return (
       <div>
         <Container style={{ minHeight: "80%" }}>

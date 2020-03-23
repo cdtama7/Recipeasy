@@ -17,10 +17,10 @@ class Instructions extends Component {
       .then(res => {
         console.log(res)
         this.setState({ active: true})
-        res.data[0].steps.map((step) => (
-          this.setState({ stepNums: [...this.state.stepNums, step.number]}),
-          this.setState({ stepText: [...this.state.stepText, step.step]})
-        ))
+        res.data[0].steps.map((step) => {
+          this.setState({ stepNums: [...this.state.stepNums, step.number]});
+          this.setState({ stepText: [...this.state.stepText, step.step]});
+        })
     })
     .catch(err => this.setState({ error: err.message }))
   }

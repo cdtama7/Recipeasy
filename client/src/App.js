@@ -18,7 +18,7 @@ function App() {
   return (
       <React.Fragment>
         <NavBar />
-        <main class="container">
+        <main className="container">
           <Switch>
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
