@@ -18,3 +18,26 @@
     background-attachment: fixed;
   }
 
+  .btn-recipeasy {
+    color: white !important;
+    background-color: #E3710B !important;
+  }
+
+  .labelOne {
+    font-family: 'Baloo 2', cursive;
+    font-size: 36px;
+    color: #9C4D07;
+  }
+
+  .labelBig {
+    font-family: 'Baloo 2', cursive;
+    font-size: 45px;
+    color: #9C4D07;
+  }
+
+  .recipeSearch {
+    margin-top: 15%
+  }
+  .btn-secondary {
+    padding: 15px;
+  }

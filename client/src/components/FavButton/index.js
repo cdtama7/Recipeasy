@@ -23,7 +23,7 @@ class FavButton extends Component {
             return "btn btn-lg btn-block btn-danger";
         }
         else {
-            return "btn btn-lg btn-block btn-primary";
+            return "btn btn-lg btn-block btn-recipeasy";
         }
     }
     handleClick = event => {

@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Fridge from "./pages/Fridge";
 import Recipes from "./pages/Recipes";
+import Favorite from "./pages/Favorite";
 import RegisterForm from "./components/registerForm";
 import Logout from "./components/logout";
 import LoginForm from "./components/loginForm";
@@ -18,13 +19,14 @@ function App() {
   return (
       <React.Fragment>
         <NavBar />
-        <main class="container">
+        <main className="container">
           <Switch>
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
             <ProtectedRoute path="/fridge" render={(props) => <Fridge {...props} user={user} />} />
             <ProtectedRoute path="/recipes" render={(props) => <Recipes {...props} user={user} />} />
+            <ProtectedRoute path="/favorite" render={(props) => <Favorite {...props} user={user} />} />
             <Route path="/not-found" component={NotFound} />
             <Route path="/" component={StartScreen} />
             <Redirect to="/not-found" />
