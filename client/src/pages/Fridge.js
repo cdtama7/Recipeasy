@@ -47,12 +47,10 @@ class Fridge extends Component {
                         <Input addItem={this.addItem} />
                     </Col>
                     <Col md={6}>
-                        <Items list={ this.state.list } deleteItem = { this.deleteItem }/>
+                        <Items list={ this.state.list } deleteItem={ this.deleteItem }/>
+                        <NextButton />
                     </Col>
-                </Row>
-                <br/>
-                <NextButton />
-    
+                </Row>   
             </React.Fragment>
         );
     }

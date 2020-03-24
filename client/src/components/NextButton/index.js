@@ -1,15 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import "./index.css";
-
-
-
 
 function NextButton() {
     return (
-        <div>
-        <Link className="btn btn-primary btn-lg btn-block" to="/recipes">Find Recipes</Link>
-        </div>
+        <Button as={Link} variant="recipeasy" to="/recipes" className="btn-block">Find Recipes</Button>
     );
   }
   

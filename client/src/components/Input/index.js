@@ -27,13 +27,11 @@ handleFormSubmit = event => {
 
 render () {
     return (
-        <div>
         <div className="input">
-            <label htmlFor="formGroupExampleInput">Add a new item:</label>
+            <label className = "labelOne" htmlFor="formGroupExampleInput">Add a new item</label>
             <input value = {this.state.text} name = "text" onChange = {this.handleInputChange} type="text" className="form-control" id="formGroupExampleInput" placeholder="Whats in your fridge?" />
             <br/>
-            <Button variant="primary" onClick = {this.handleFormSubmit} type="submit" >Add to Fridge</Button>
-        </div>
+            <Button variant="recipeasy" className="btn-block" onClick={this.handleFormSubmit} type="submit">Add to Fridge</Button>
         </div>
     );
 }

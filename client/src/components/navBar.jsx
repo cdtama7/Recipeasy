@@ -1,6 +1,9 @@
 import React from "react";
 import { useAuth0 } from '../contexts/auth0-context';
 import { Navbar, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import Octicon, { getIconByName } from '@primer/octicons-react';
+import ReactTooltip from 'react-tooltip'
 
 // See https://react-bootstrap.github.io for docs
 const NavBar = () => {
@@ -23,15 +26,22 @@ const NavBar = () => {
           )}
           {!isLoading && user && (
             <React.Fragment>
+              <Nav.Link as={Link} to="/fridge" data-tip="Fridge">
+                <Octicon icon={getIconByName('note')} />
+              </Nav.Link>
+              <Nav.Link as={Link} to="/favorite" data-tip="Favorites">
+                <Octicon icon={getIconByName('heart')} />
+              </Nav.Link>
               <Navbar.Text>{user.name}</Navbar.Text>
               <Nav.Link onClick={() => logout({ returnTo: window.location.origin })}>
                 Logout
               </Nav.Link>
+              <ReactTooltip place="bottom" />
             </React.Fragment>
           )}
         </Nav>
       </Navbar>
-      
+
     </React.Fragment>
   )
 }

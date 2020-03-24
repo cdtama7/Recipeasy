@@ -7,7 +7,7 @@ import { useAuth0 } from '../contexts/auth0-context';
     const { user } = useAuth0(); 
     if (props.diet === "normal") {
       return (
-        <div className="container-fluid">
+        <React.Fragment>
           {props.results.map((result, i) => (
             <div key={"search result 1" + i} className="row">
               <div className="col-md-6">
@@ -43,12 +43,12 @@ import { useAuth0 } from '../contexts/auth0-context';
               />
             </div>
           ))}
-        </div>
+        </React.Fragment>
       );
     }
     else {
       return (
-        <div className="container-fluid">
+        <React.Fragment>
           {props.specialResults.map((specialResult, i) => (
             <div key={i} className="row">
               <div className="col-md-6">
@@ -79,7 +79,7 @@ import { useAuth0 } from '../contexts/auth0-context';
               />
             </div>
           ))}
-        </div>
+        </React.Fragment>
       );
 
     }

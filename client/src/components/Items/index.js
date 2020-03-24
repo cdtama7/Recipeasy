@@ -11,7 +11,7 @@ const Items = (props) => {
 
         return (
             <React.Fragment>
-                <div className="fridge-header">Your Fridge:</div>
+                <div className="fridge-header labelOne">Your Fridge</div>
                 {props.list.map((item) => (
                     <Toast key={item._id}>
                         <ToastBody>

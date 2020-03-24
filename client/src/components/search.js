@@ -1,30 +1,31 @@
 import React from "react";
+import { Button } from 'react-bootstrap';
 // import "./style.css";
 
 function Search(props) {
   
   return (
-    <React.Fragment>
-      <h3>Choose your diet</h3>
-      <div className="btn-group btn-group-toggle" data-toggle="buttons">
-        <label className="btn btn-secondary active" onClick={props.handleNormalClick}>
-          <input type="radio" name="options" id="normalSearchToggle" defaultChecked/> Normal
+    <div className="text-center recipeSearch">
+      <div className="labelOne">Choose your diet</div>
+      <div className="btn-group btn-group-large btn-group-toggle" data-toggle="buttons">
+        <label className="btn btn-large btn-secondary active" onClick={props.handleNormalClick}>
+          <input type="radio" name="options" id="normalSearchToggle" defaultChecked/>Normal
         </label>
-        <label className="btn btn-secondary" onClick={props.handleGlutenFreeClick}>
-          <input type="radio" name="options" id="glutenFreeSearchToggle"/> Gluten Free
+        <label className="btn btn-large btn-secondary" onClick={props.handleGlutenFreeClick}>
+          <input type="radio" name="options" id="glutenFreeSearchToggle"/>Gluten Free
         </label>
-        <label className="btn btn-secondary" onClick={props.handleVeganClick}>
-          <input type="radio" name="options" id="veganSearchToggle"/> Vegan
+        <label className="btn btn-large btn-secondary" onClick={props.handleVeganClick}>
+          <input type="radio" name="options" id="veganSearchToggle"/>Vegan
         </label>
-        <label className="btn btn-secondary" onClick={props.handleVegetarianClick}>
-          <input type="radio" name="options" id="vegetarianSearchToggle"/> Vegetarian
+        <label className="btn btn-large btn-secondary" onClick={props.handleVegetarianClick}>
+          <input type="radio" name="options" id="vegetarianSearchToggle"/>Vegetarian
         </label>
       </div>
       <br/>
-      <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+      <Button type="submit" onClick={props.handleFormSubmit} variant="recipeasy" style={{"width": "345px"}}>
         Search
-      </button>
-      </React.Fragment>
+      </Button>
+      </div>
   );
 }
 
