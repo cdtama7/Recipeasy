@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <React.Fragment>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Welcome to RecipEasy</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Welcome to RecipEasy</Navbar.Brand>
         <Nav className="mr-auto">
         </Nav>
 
