@@ -27,12 +27,12 @@ class Instructions extends Component {
   
   render() {
   return (
-    <Col md={6}>
-      <Button type="submit" variant="recipeasy" className={this.state.active ? "inactive":"active"} id="get-instructions" onClick={this.getAndShowInstructions}>
+    <React.Fragment>
+      <Button type="submit" variant="recipeasy" className={this.state.active ? "inactive btn-block":"active btn-block"} id="get-instructions" onClick={this.getAndShowInstructions}>
         Get Instructions
       </Button>
       <Card className={this.state.active ? "active":"inactive"} id="instructions">
-      <Card.Header>{this.props.title}</Card.Header>
+      <Card.Header><strong>Instructions</strong></Card.Header>
       <Card.Body>
         {/* <Card.Text> */}
           {this.state.stepNums.map((stepNum, i) => (
@@ -43,7 +43,7 @@ class Instructions extends Component {
         {/* </Card.Text> */}
       </Card.Body>
     </Card>
-    </Col>
+    </React.Fragment>
   )
 }
   }

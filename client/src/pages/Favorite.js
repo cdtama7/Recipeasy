@@ -32,40 +32,52 @@ class Favorite extends Component {
 
     render() {
         return (
-            <Container className="container-fluid">
-                {this.state.favorites.map((favorite, i) => (
-                    <Row key={i}>
-                        <Col md={6}>
-                            <Card>
-                                <Card.Header>
-                                    <Row>
-                                        <Col md={4}>
-                                            <img src={favorite.recipe.image} className="card-img"></img>
-                                        </Col>
-                                        <Col>
-                                            <h3>{favorite.recipe.title}</h3>
-                                        </Col>
-                                    </Row>
-                                </Card.Header>
-                                <Card.Body>
-                                    <strong>Ingredients</strong><br/>
-                                    <ListGroup>
-                                        {favorite.recipe.extendedIngredients.map((ingredient, i) => (
-                                            <ListGroupItem key={`ingredient-${ingredient.id}__${i}`}>
-                                                {ingredient.original}
-                                            </ListGroupItem>
-                                        ))}
-                                    </ListGroup>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Instructions
-                            title={favorite.recipe.title}
-                            id={favorite.recipe.id}
-                        />
-                    </Row>
-                ))}
-            </Container>
+            <React.Fragment>
+                <br />
+                <br />
+                <h1 className="text-center labelBig">My Favorite Recipes</h1>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <Container className="container-fluid">
+                    {this.state.favorites.map((favorite, i) => (
+                        <Row key={i}>
+                            <Col md={12}>
+                                <Card>
+                                    <Card.Header>
+                                        <Row>
+                                            <Col md={4}>
+                                                <img src={favorite.recipe.image} className="card-img"></img>
+                                            </Col>
+                                            <Col>
+                                                <h3>{favorite.recipe.title}</h3>
+                                            </Col>
+                                        </Row>
+                                    </Card.Header>
+                                    <Card.Body>
+                                        <Card.Header><strong>Ingredients</strong></Card.Header>
+                                        <ListGroup>
+                                            {favorite.recipe.extendedIngredients.map((ingredient, i) => (
+                                                <ListGroupItem key={`ingredient-${ingredient.id}__${i}`}>
+                                                    {ingredient.original}
+                                                </ListGroupItem>
+                                            ))}
+                                        </ListGroup>
+                                        <Instructions
+                                            title={favorite.recipe.title}
+                                            id={favorite.recipe.id}
+                                        />
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+
+                        </Row>
+                    ))}
+                </Container>
+            </React.Fragment>
         )
     }
 }

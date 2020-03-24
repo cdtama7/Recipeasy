@@ -163,6 +163,7 @@ class Recipes extends Component {
           {this.state.searchInProgress && this.state.resultsReady && this.state.youtubeReady && (
             <Row>
               <Col md={6}>
+                <div className="text-center labelOne">Recipe Results</div>
                 <SearchResults
                   results={this.state.results}
                   specialResults={this.state.specialResults}
@@ -170,6 +171,7 @@ class Recipes extends Component {
                 />
               </Col>
               <Col>
+                <div className="text-center labelOne">YouTube Results</div>
                 <YoutubeSearchResults videos={this.state.youtubeVideos} />
               </Col>
 
