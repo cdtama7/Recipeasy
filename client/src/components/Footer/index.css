@@ -1,4 +1,4 @@
-p {
+.separator {
   padding: 0px 0px 70px 0px;
 }
 
@@ -12,3 +12,4 @@ p {
   text-align: right;
   position: fixed;
 }
+
