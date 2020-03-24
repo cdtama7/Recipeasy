@@ -5,12 +5,16 @@ import logo from "../../logo.png";
 function Footer() {
   return (
     <React.Fragment>
-      <p></p>
+      <p className="separator"></p>
       <footer className="footer">
-        <img src={logo} alt="logo" />
+        <p>
+          Firuza Abramyan - Taylor Zettel - Carlos De Castro{" "}
+          <img src={logo} alt="logo" />
+        </p>
       </footer>
     </React.Fragment>
   );
 }
 
 export default Footer;
+
