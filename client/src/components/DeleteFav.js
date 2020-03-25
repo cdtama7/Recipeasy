@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-import "./index.css";
+import API from "../utils/API";
 //
 
 const { Octicon, x } = require("octicons-react");
