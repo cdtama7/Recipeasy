@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import Instructions from "../components/Instructions/instructions"
 import API from "../utils/API";
-
+import DeleteFav from "./../components/DeleteFav";
 class Favorite extends Component {
 
     state = {
@@ -70,6 +70,8 @@ class Favorite extends Component {
                                             title={favorite.recipe.title}
                                             id={favorite.recipe.id}
                                         />
+                                        <br></br>
+                                        <DeleteFav recipe={favorite.recipe.id} />
                                     </Card.Body>
                                 </Card>
                             </Col>
