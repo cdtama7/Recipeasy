@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Container, Row, Col, Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import Instructions from "../components/Instructions/instructions"
 import API from "../utils/API";
-import DeleteFav from "./../components/DeleteFav";
+const { Octicon, x } = require("octicons-react");
+
 class Favorite extends Component {
 
     state = {
@@ -10,24 +11,37 @@ class Favorite extends Component {
     }
 
     componentDidMount() {
+        this.updateFavorites();
+    }
+
+    updateFavorites() {
         API.getFavsForUser(this.props.user.sub)
-            .then(res => this.setState({
-                // We have two different structures for recipes because of the
-                // special ingredient stuff, so just combine the different ingredient
-                // lists on the regular recipes to match the "special" ones.
-                favorites: res.data.map((favorite, i) => {
-                    if (favorite.recipe.extendedIngredients !== undefined) {
-                        return favorite
-                    }
-                    else {
-                        favorite.recipe.extendedIngredients = favorite.recipe.usedIngredients.concat(favorite.recipe.missedIngredients);
-                    }
-                    return favorite;
-                })
+        .then(res => this.setState({
+            // We have two different structures for recipes because of the
+            // special ingredient stuff, so just combine the different ingredient
+            // lists on the regular recipes to match the "special" ones.
+            favorites: res.data.map((favorite, i) => {
+                if (favorite.recipe.extendedIngredients !== undefined) {
+                    return favorite
+                }
+                else {
+                    favorite.recipe.extendedIngredients = favorite.recipe.usedIngredients.concat(favorite.recipe.missedIngredients);
+                }
+                return favorite;
             })
-            )
-            .then(() => console.log(this.state.favorites))
-            .catch(err => console.log(err));
+        })
+        )
+        .then(() => console.log(this.state.favorites))
+        .catch(err => console.log(err));
+    }
+
+    deleteFavorite(favorite) {
+        API.deleteFavsForUserByRecipeId(
+            favorite.userId,
+            favorite.recipeId
+        ).then(() => {
+            this.updateFavorites();
+        });
     }
 
     render() {
@@ -71,7 +85,9 @@ class Favorite extends Component {
                                             id={favorite.recipe.id}
                                         />
                                         <br></br>
-                                        <DeleteFav recipe={favorite.recipe.id} />
+                                        <Button variant="recipeasy" className="btn-block" onClick={()=>this.deleteFavorite(favorite)}>
+                                            <Octicon icon={x} />
+                                        </Button>
                                     </Card.Body>
                                 </Card>
                             </Col>

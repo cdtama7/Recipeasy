@@ -29,12 +29,15 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/fridge" data-tip="Fridge">
                 <Octicon icon={getIconByName('note')} />
               </Nav.Link>
+              <Nav.Link as={Link} to="/recipes" data-tip="Search">
+                <Octicon icon={getIconByName('search')} />
+              </Nav.Link>
               <Nav.Link as={Link} to="/favorite" data-tip="Favorites">
                 <Octicon icon={getIconByName('heart')} />
               </Nav.Link>
-              <Navbar.Text>{user.name}</Navbar.Text>
+              <Navbar.Text>&nbsp;&nbsp;&nbsp;{user.name}</Navbar.Text>
               <Nav.Link onClick={() => logout({ returnTo: window.location.origin })}>
-                Logout
+                &nbsp;&nbsp;&nbsp;Logout
               </Nav.Link>
               <ReactTooltip place="bottom" />
             </React.Fragment>
