@@ -9,7 +9,7 @@ function Search(props) {
       <div className="labelOne">Choose your diet</div>
       <div className="btn-group btn-group-large btn-group-toggle" data-toggle="buttons">
         <label className="btn btn-large btn-secondary active" onClick={props.handleNormalClick}>
-          <input type="radio" name="options" id="normalSearchToggle" defaultChecked/>Normal
+          <input type="radio" name="options" id="normalSearchToggle" defaultChecked/>Unrestricted
         </label>
         <label className="btn btn-large btn-secondary" onClick={props.handleGlutenFreeClick}>
           <input type="radio" name="options" id="glutenFreeSearchToggle"/>Gluten Free
