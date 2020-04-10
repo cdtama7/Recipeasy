@@ -1,7 +1,7 @@
 # Recipeasy
 ## Developers: Firuza Abramyan, Taylor Zettel, Carlos De Castro
 
-## [Link to Project](https://recipeasy.co/)
+## [Recipeasy Website](https://recipeasy.co/)
 ![](client/src/images/readme/page1.png)
 ![](client/src/images/readme/page2.png)
 ![](client/src/images/readme/page3.png)
